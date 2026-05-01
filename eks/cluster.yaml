@@ -1,0 +1,17 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: event-driven-ecommerce-mvp-cluster
+  region: us-east-1
+
+iam:
+  withOIDC: true  # REQUIRED later for ALB controller
+
+managedNodeGroups:
+  - name: ng-1
+    instanceTypes: ["t3.medium"]
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 3
+    privateNetworking: true
